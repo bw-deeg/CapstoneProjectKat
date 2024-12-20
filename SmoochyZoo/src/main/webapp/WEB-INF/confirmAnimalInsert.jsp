@@ -21,6 +21,8 @@
 			The Animal's Name is: ${animal.name}<br>
 			The Animal's Birthday is is: ${animal.birthday}<br>
 			The Animal's Gender is: ${animal.gender }<br>
+			The Animal's Category is: ${animal.category.name }<br>
+			The Animal's Species is: ${animal.species.name }<br>
 		</c:when>
 		<c:otherwise>
 			Unable to introduce the Animal to our Zoo!

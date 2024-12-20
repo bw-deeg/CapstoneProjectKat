@@ -23,11 +23,13 @@ import com.skilldistillery.smoochyzoo.data.CategoryDAO;
 public class AnimalController 
 {
 	private final AnimalDAO animalDAO;
+	private final CategoryDAO catDAO;
 	
 	
-	public AnimalController(AnimalDAO dao)
+	public AnimalController(AnimalDAO dao,CategoryDAO catDAO)
 	{
 		this.animalDAO = dao;
+		this.catDAO = catDAO;
 	}
 	
 	@GetMapping("getAllAnimals.do")
@@ -91,7 +93,6 @@ public class AnimalController
 	{
 		ModelAndView mv = new ModelAndView();
 		Animal animal = new Animal();
-		Animal theNewAnimal = null;
 		
 		try
 		{
@@ -108,7 +109,8 @@ public class AnimalController
 			
 			if(theAnimal.getCategory() != null)
 			{
-				animal.setCategory(theAnimal.getCategory());
+				Category catt = catDAO.findCategoryById(theAnimal.getCategory().getId());
+				animal.setCategory(catt);
 			}
 			
 			if ((theAnimal.getSpecies() != null))
@@ -136,11 +138,9 @@ public class AnimalController
 				animal.setActive(theAnimal.isActive());
 			}
 			
+			theAnimal = animalDAO.addAnimal(animal);
 			
-			
-			theNewAnimal = animalDAO.addAnimal(animal);
-			
-			Animal sillyAnimal =  animalDAO.findAnimalById(theNewAnimal.getId());
+			Animal sillyAnimal =  animalDAO.findAnimalById(theAnimal.getId());
 			
 			mv.setViewName("redirect:animalAdded.do");
 			redir.addFlashAttribute("animal", sillyAnimal); 

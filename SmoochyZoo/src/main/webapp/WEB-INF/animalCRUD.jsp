@@ -11,6 +11,7 @@
 <%@  include file="bootstraphead.jsp" %>
 </head>
 <body>
+
 <div class="container">
 		<div class="row">
 			<a href="index.do"> Home</a>
@@ -44,11 +45,11 @@
 				<br>
 				<br>
 				<label for="species.id">Species</label><br>
-				<select name="species.id">
-				<c:forEach items="${speciesList}" var="species">
-				    <option value="${species.id}">${species.name }</option>
-				 </c:forEach>
-				</select>
+					<select name="species.id">
+						<c:forEach items="${speciesList}" var="species">
+						    <option value="${species.id}">${species.name }</option>
+						 </c:forEach>
+					</select>
 				<br>
 				<br>
 				<label for="gender">Gender</label><br>
@@ -65,25 +66,7 @@
 		</form>
 		
 		</div>
-<%--
-				<div class="inner">
-				<form action="deleteHookOrNeedle.do">
-					<input type="hidden" id="id" name="id" value="${needleOrHook.id}" />
-					<input type="submit" value="Delete the Needle, Hook or Cable"/>
-				</form>
-				</div>
-				<br>
-				<div class="inner">
-					<form action="updateNeedleOrHookGetInfo.do">
-						<input type="hidden" id="id" name="id" value="${needleOrHook.id}" />
-						<input type="submit" value="Update the Needle's, Hook's or Cable's information"/><br>
-					</form>
-				</div>
-				<br>
 
-	 		</div>
-		</div>
---%>
 	</div>
 </div>
 </body>
